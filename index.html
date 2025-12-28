@@ -7,260 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        :root {
-            --bg-primary: #F8FAFC;
-            --bg-secondary: #FFFFFF;
-            --bg-tertiary: #F1F5F9;
-            --text-primary: #1E293B;
-            --text-secondary: #475569;
-            --text-heading: #020617;
-            --accent-primary: #38BDF8;
-            --accent-secondary: #22D3EE;
-            --border-color: #E2E8F0;
-            --shadow-color: rgba(0, 0, 0, 0.08);
-            --footer-bg: #1E293B;
-        }
-        
-        [data-theme="dark"] {
-            --bg-primary: #020617;
-            --bg-secondary: #1E293B;
-            --bg-tertiary: #0F172A;
-            --text-primary: #F8FAFC;
-            --text-secondary: #CBD5E1;
-            --text-heading: #FFFFFF;
-            --accent-primary: #38BDF8;
-            --accent-secondary: #22D3EE;
-            --border-color: #334155;
-            --shadow-color: rgba(0, 0, 0, 0.2);
-            --footer-bg: #0F172A;
-        }
-        
-        body {
-            font-family: 'Lora', serif;
-            background-color: var(--bg-primary);
-            color: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 700;
-            color: var(--text-heading);
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-tertiary) 100%);
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            color: white;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
-            font-family: 'Raleway', sans-serif;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(56, 189, 248, 0.3);
-        }
-        
-        .btn-secondary {
-            background-color: var(--bg-secondary);
-            color: var(--accent-primary);
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            border: 2px solid var(--accent-primary);
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
-            font-family: 'Raleway', sans-serif;
-        }
-        
-        .btn-secondary:hover {
-            background-color: var(--accent-primary);
-            color: white;
-        }
-        
-        .feature-card {
-            transition: all 0.3s ease;
-            border-radius: 12px;
-            overflow: hidden;
-            background: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(56, 189, 248, 0.15);
-        }
-        
-        .color-preview {
-            height: 120px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .color-preview:hover {
-            transform: scale(1.05);
-        }
-        
-        .nav-link {
-            color: var(--text-secondary);
-            font-weight: 500;
-            text-decoration: none;
-            position: relative;
-            padding-bottom: 4px;
-            font-family: 'Raleway', sans-serif;
-        }
-        
-        .nav-link:hover {
-            color: var(--accent-primary);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--accent-primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .tool-card {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 30px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-        
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(56, 189, 248, 0.1);
-            border-color: var(--accent-primary);
-        }
-        
-        footer a {
-            color: #CBD5E1;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        footer a:hover {
-            color: var(--accent-primary);
-        }
-        
-        /* Theme Toggle Button */
-        .theme-toggle {
-            width: 50px;
-            height: 26px;
-            border-radius: 13px;
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            position: relative;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-left: 10px;
-            border: none;
-        }
-        
-        .theme-toggle::before {
-            content: '';
-            position: absolute;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background-color: white;
-            top: 2px;
-            left: 2px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        [data-theme="dark"] .theme-toggle::before {
-            transform: translateX(24px);
-        }
-        
-        .theme-toggle i {
-            position: absolute;
-            font-size: 12px;
-            z-index: 1;
-            transition: all 0.3s ease;
-        }
-        
-        .theme-toggle .fa-sun {
-            color: #FFD700;
-            left: 7px;
-            top: 7px;
-            opacity: 0;
-        }
-        
-        .theme-toggle .fa-moon {
-            color: #F8FAFC;
-            right: 7px;
-            top: 7px;
-            opacity: 1;
-        }
-        
-        [data-theme="dark"] .theme-toggle .fa-sun {
-            opacity: 1;
-        }
-        
-        [data-theme="dark"] .theme-toggle .fa-moon {
-            opacity: 0;
-        }
-        
-        /* Additional custom styles */
-        .text-gradient {
-            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .card-shadow {
-            box-shadow: 0 4px 20px var(--shadow-color);
-        }
-        
-        .theme-toggle-container {
-            display: flex;
-            align-items: center;
-            margin-left: 10px;
-        }
-        
-        .theme-label {
-            font-family: 'Raleway', sans-serif;
-            font-size: 14px;
-            color: var(--text-secondary);
-            margin-right: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-theme="light">
     <!-- Header -->
@@ -269,10 +16,10 @@
             <div class="flex justify-between items-center">
                 <!-- Logo -->
                 <div class="flex items-center space-x-3">
-                    <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))">
+                    <div class="w-10 h-10 rounded-lg flex items-center justify-center logo-gradient">
                         <i class="fas fa-palette text-white text-xl"></i>
                     </div>
-                    <h1 class="text-2xl font-bold text-heading" style="color: var(--text-heading);">Palettecraft</h1>
+                    <h1 class="text-2xl font-bold text-heading">Palettecraft</h1>
                 </div>
                 
                 <!-- Navigation -->
@@ -301,18 +48,18 @@
                 </div>
                 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="md:hidden" style="color: var(--text-heading);">
+                <button id="mobile-menu-button" class="md:hidden">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
             
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden mt-4 md:hidden">
+            <div id="mobile-menu" class="hidden mt-4 md:hidden mobile-menu">
                 <div class="flex flex-col space-y-3">
-                    <a href="index.html" class="font-medium hover:text-accent py-2 font-raleway" style="color: var(--text-heading);">Home</a>
-                    <a href="colors.html" class="font-medium hover:text-accent py-2 font-raleway" style="color: var(--text-heading);">Color Palettes</a>
-                    <a href="fonts.html" class="font-medium hover:text-accent py-2 font-raleway" style="color: var(--text-heading);">Font Styles</a>
-                    <a href="resources.html" class="font-medium hover:text-accent py-2 font-raleway" style="color: var(--text-heading);">Resources</a>
+                    <a href="index.html" class="font-medium hover:text-accent py-2 font-raleway">Home</a>
+                    <a href="colors.html" class="font-medium hover:text-accent py-2 font-raleway">Color Palettes</a>
+                    <a href="fonts.html" class="font-medium hover:text-accent py-2 font-raleway">Font Styles</a>
+                    <a href="resources.html" class="font-medium hover:text-accent py-2 font-raleway">Resources</a>
                 </div>
             </div>
         </div>
@@ -323,10 +70,10 @@
         <div class="container mx-auto">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <div class="md:w-1/2 mb-12 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--text-heading);">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-6">
                         Create Beautiful Websites with <span class="text-gradient">Perfect Colors & Fonts</span>
                     </h1>
-                    <p class="text-xl mb-8" style="color: var(--text-secondary);">
+                    <p class="text-xl mb-8 hero-subtitle">
                         Palettecraft helps you find harmonious color palettes and font combinations for your web projects. Free, simple, and no sign-up required.
                     </p>
                     <div class="flex flex-wrap gap-4">
@@ -341,38 +88,38 @@
                     <div class="mt-12 flex items-center space-x-6">
                         <div class="flex items-center">
                             <div class="text-center mr-6">
-                                <p class="font-bold text-2xl" style="color: var(--accent-primary);">1,200+</p>
-                                <p class="text-sm" style="color: var(--text-secondary);">Color Palettes</p>
+                                <p class="font-bold text-2xl accent-primary">1,200+</p>
+                                <p class="text-sm stats-label">Color Palettes</p>
                             </div>
                             <div class="text-center">
-                                <p class="font-bold text-2xl" style="color: var(--accent-secondary);">500+</p>
-                                <p class="text-sm" style="color: var(--text-secondary);">Font Combinations</p>
+                                <p class="font-bold text-2xl accent-secondary">500+</p>
+                                <p class="text-sm stats-label">Font Combinations</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 
                 <div class="md:w-1/2">
-                    <div class="rounded-2xl card-shadow p-6" style="background-color: var(--bg-secondary); border: 1px solid var(--border-color);">
+                    <div class="rounded-2xl card-shadow p-6 preview-card">
                         <div class="flex mb-6">
-                            <div class="w-1/5 h-20 rounded-lg mr-2" style="background-color: #020617;"></div>
-                            <div class="w-1/5 h-20 rounded-lg mr-2" style="background-color: #38BDF8;"></div>
-                            <div class="w-1/5 h-20 rounded-lg mr-2" style="background-color: #1E293B;"></div>
-                            <div class="w-1/5 h-20 rounded-lg mr-2" style="background-color: #22D3EE;"></div>
-                            <div class="w-1/5 h-20 rounded-lg" style="background-color: #F8FAFC; border: 1px solid var(--border-color);"></div>
+                            <div class="color-sample w-1/5 h-20 rounded-lg mr-2 color-1"></div>
+                            <div class="color-sample w-1/5 h-20 rounded-lg mr-2 color-2"></div>
+                            <div class="color-sample w-1/5 h-20 rounded-lg mr-2 color-3"></div>
+                            <div class="color-sample w-1/5 h-20 rounded-lg mr-2 color-4"></div>
+                            <div class="color-sample w-1/5 h-20 rounded-lg color-5"></div>
                         </div>
                         
                         <div class="mb-6">
-                            <h3 class="text-xl font-bold mb-3" style="color: var(--text-heading);">Modern Web Design</h3>
-                            <p style="color: var(--text-secondary);">
+                            <h3 class="text-xl font-bold mb-3">Modern Web Design</h3>
+                            <p class="preview-description">
                                 This elegant color palette combines deep navy with vibrant cyan accents, perfect for modern websites. The light accent adds a touch of contrast.
                             </p>
                         </div>
                         
-                        <div class="rounded-lg p-4 border" style="background-color: var(--bg-tertiary); border-color: var(--border-color);">
-                            <h4 class="font-bold mb-2" style="color: var(--text-heading);">Font Pairing:</h4>
-                            <p class="text-lg" style="color: var(--text-heading); font-family: 'Raleway', sans-serif;">Raleway for headings</p>
-                            <p class="mt-1" style="color: var(--text-secondary);">Lora for body text</p>
+                        <div class="rounded-lg p-4 font-pairing-card">
+                            <h4 class="font-bold mb-2">Font Pairing:</h4>
+                            <p class="text-lg heading-font">Raleway for headings</p>
+                            <p class="mt-1 body-font">Lora for body text</p>
                         </div>
                     </div>
                 </div>
@@ -381,11 +128,11 @@
     </section>
 
     <!-- Main Tools Section -->
-    <section class="py-16" style="background-color: var(--bg-tertiary);">
+    <section class="py-16 tools-section">
         <div class="container mx-auto">
             <div class="text-center mb-12">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4" style="color: var(--text-heading);">Design Tools</h2>
-                <p class="text-xl max-w-3xl mx-auto" style="color: var(--text-secondary);">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Design Tools</h2>
+                <p class="text-xl max-w-3xl mx-auto section-subtitle">
                     Everything you need to create visually stunning websites. Completely free to use.
                 </p>
             </div>
@@ -394,24 +141,24 @@
                 <!-- Color Tool -->
                 <div class="tool-card">
                     <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 rounded-xl flex items-center justify-center mr-4" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))">
+                        <div class="tool-icon w-14 h-14 rounded-xl flex items-center justify-center mr-4 color-tool-icon">
                             <i class="fas fa-palette text-white text-2xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold" style="color: var(--text-heading);">Color Palette Generator</h3>
-                            <p style="color: var(--text-secondary);">Create beautiful color schemes</p>
+                            <h3 class="text-xl font-bold">Color Palette Generator</h3>
+                            <p class="tool-subtitle">Create beautiful color schemes</p>
                         </div>
                     </div>
                     
                     <div class="flex mb-6">
-                        <div class="w-1/5 h-16 rounded-l-lg" style="background-color: #020617;"></div>
-                        <div class="w-1/5 h-16" style="background-color: #38BDF8;"></div>
-                        <div class="w-1/5 h-16" style="background-color: #1E293B;"></div>
-                        <div class="w-1/5 h-16" style="background-color: #22D3EE;"></div>
-                        <div class="w-1/5 h-16 rounded-r-lg" style="background-color: #F8FAFC; border-left: 1px solid var(--border-color);"></div>
+                        <div class="w-1/5 h-16 rounded-l-lg color-sample-1"></div>
+                        <div class="w-1/5 h-16 color-sample-2"></div>
+                        <div class="w-1/5 h-16 color-sample-3"></div>
+                        <div class="w-1/5 h-16 color-sample-4"></div>
+                        <div class="w-1/5 h-16 rounded-r-lg color-sample-5"></div>
                     </div>
                     
-                    <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    <p class="tool-description">
                         Generate color palettes with our smart tool or browse thousands of curated color schemes. Export CSS code for easy implementation.
                     </p>
                     
@@ -423,23 +170,23 @@
                 <!-- Font Tool -->
                 <div class="tool-card">
                     <div class="flex items-center mb-6">
-                        <div class="w-14 h-14 rounded-xl flex items-center justify-center mr-4" style="background: linear-gradient(135deg, var(--accent-secondary), #0EA5E9)">
+                        <div class="tool-icon w-14 h-14 rounded-xl flex items-center justify-center mr-4 font-tool-icon">
                             <i class="fas fa-font text-white text-2xl"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl font-bold" style="color: var(--text-heading);">Font Pairing Tool</h3>
-                            <p style="color: var(--text-secondary);">Find perfect font combinations</p>
+                            <h3 class="text-xl font-bold">Font Pairing Tool</h3>
+                            <p class="tool-subtitle">Find perfect font combinations</p>
                         </div>
                     </div>
                     
                     <div class="mb-6">
-                        <h4 class="font-bold mb-2" style="color: var(--text-heading); font-family: 'Raleway', sans-serif; font-size: 1.5rem;">Beautiful Heading Font</h4>
-                        <p style="color: var(--text-secondary);">
+                        <h4 class="font-bold mb-2 heading-font-demo">Beautiful Heading Font</h4>
+                        <p class="tool-description">
                             Paired with a clean, readable body font that creates perfect typographic harmony for your website.
                         </p>
                     </div>
                     
-                    <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                    <p class="tool-description">
                         Browse hundreds of font combinations, preview how they look together, and get implementation code for your projects.
                     </p>
                     
@@ -452,18 +199,18 @@
     </section>
 
     <!-- Footer -->
-    <footer class="pt-12 pb-8" style="background-color: var(--footer-bg);">
+    <footer class="pt-12 pb-8 footer">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <!-- Column 1 -->
                 <div>
                     <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center logo-gradient">
                             <i class="fas fa-palette text-white text-xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-white">Palettecraft</h3>
                     </div>
-                    <p class="mb-6 text-gray-300">
+                    <p class="mb-6 footer-text">
                         Free tools for designers and developers to find perfect colors and fonts for web projects.
                     </p>
                 </div>
@@ -501,99 +248,12 @@
                 </div>
             </div>
             
-            <div class="border-t border-gray-700 pt-8 text-center text-gray-300">
+            <div class="border-t border-gray-700 pt-8 text-center footer-text">
                 <p>&copy; 2023 Palettecraft. All rights reserved. A free tool for the design community.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Theme Toggle Functionality
-        const themeToggle = document.getElementById('themeToggle');
-        const themeLabels = document.querySelectorAll('.theme-label');
-        
-        // Check for saved theme preference or default to light
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.body.setAttribute('data-theme', savedTheme);
-        updateThemeLabels(savedTheme);
-        
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = document.body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            
-            // Update theme
-            document.body.setAttribute('data-theme', newTheme);
-            
-            // Save preference to localStorage
-            localStorage.setItem('theme', newTheme);
-            
-            // Update labels
-            updateThemeLabels(newTheme);
-        });
-        
-        function updateThemeLabels(theme) {
-            themeLabels.forEach(label => {
-                if (label.previousElementSibling && label.previousElementSibling.classList.contains('theme-toggle')) {
-                    label.textContent = theme === 'light' ? 'Light' : 'Dark';
-                } else if (label.nextElementSibling && label.nextElementSibling.classList.contains('theme-toggle')) {
-                    label.textContent = theme === 'light' ? 'Light' : 'Dark';
-                }
-            });
-        }
-        
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-            
-            const icon = this.querySelector('i');
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-        
-        // Color preview hover effect
-        document.querySelectorAll('.color-preview').forEach(preview => {
-            preview.addEventListener('mouseenter', function() {
-                const color = this.style.backgroundColor;
-                const hex = rgbToHex(color);
-                
-                const tooltip = document.createElement('div');
-                tooltip.className = 'absolute bg-dark text-white text-xs px-2 py-1 rounded -mt-8';
-                tooltip.style.backgroundColor = getComputedStyle(document.body).getPropertyValue('--bg-secondary');
-                tooltip.style.color = getComputedStyle(document.body).getPropertyValue('--text-primary');
-                tooltip.textContent = hex;
-                tooltip.style.left = '50%';
-                tooltip.style.transform = 'translateX(-50%)';
-                tooltip.style.zIndex = '10';
-                
-                this.appendChild(tooltip);
-            });
-            
-            preview.addEventListener('mouseleave', function() {
-                const tooltip = this.querySelector('div');
-                if (tooltip) tooltip.remove();
-            });
-        });
-        
-        // Helper function to convert RGB to Hex
-        function rgbToHex(rgb) {
-            if (!rgb) return '#020617';
-            if (rgb.startsWith('#')) return rgb;
-            
-            const result = rgb.match(/\d+/g);
-            if (!result) return '#020617';
-            
-            const r = parseInt(result[0]);
-            const g = parseInt(result[1]);
-            const b = parseInt(result[2]);
-            
-            return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1).toUpperCase();
-        }
-    </script>
+    <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,238 @@
+/* Color Tool Specific Styles */
+
+/* Color Cards */
+.color-card {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-color: var(--border-color);
+}
+
+.color-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow-color);
+}
+
+.color-card.selected {
+    border-color: var(--accent-primary);
+    transform: scale(1.02);
+}
+
+.color-card.selected:hover {
+    transform: scale(1.02) translateY(-5px);
+}
+
+/* Color Swatches */
+.color-swatch {
+    height: 100px;
+    border-radius: 8px 8px 0 0;
+}
+
+/* Category Buttons */
+.category-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    border: 2px solid var(--border-color);
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-family: 'Raleway', sans-serif;
+    font-size: 14px;
+}
+
+.category-btn:hover {
+    border-color: var(--accent-primary);
+    color: var(--accent-primary);
+}
+
+.category-btn.active {
+    background-color: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+}
+
+/* Search Input */
+.search-input {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+.search-input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Preview Section */
+.preview-section {
+    transition: all 0.5s ease;
+}
+
+.preview-area {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
+.preview-card {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
+.preview-button {
+    background-color: var(--accent-primary);
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.preview-button:hover {
+    background-color: var(--accent-secondary);
+    transform: translateY(-2px);
+}
+
+/* Selected Info Section */
+.info-card {
+    background-color: var(--bg-tertiary);
+}
+
+/* Code Blocks */
+.code-block {
+    font-family: 'Courier New', monospace;
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    padding: 15px;
+    border-radius: 8px;
+    overflow-x: auto;
+    border: 1px solid var(--border-color);
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 0;
+}
+
+/* Small Buttons */
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 14px;
+}
+
+/* Color Tools */
+.tool-card {
+    border-color: var(--border-color);
+}
+
+.color-picker-input {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid var(--border-color);
+}
+
+.color-hex-input {
+    margin-left: 12px;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    width: 100%;
+}
+
+.color-hex-input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+}
+
+/* Color Circles */
+.color-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    border: 2px solid var(--border-color);
+}
+
+.color-circle:hover {
+    transform: scale(1.1);
+}
+
+/* Active Navigation Link */
+.nav-link.active {
+    color: var(--accent-primary);
+}
+
+.nav-link.active::after {
+    width: 100%;
+}
+
+.mobile-menu .active {
+    color: var(--accent-primary);
+}
+
+/* Palette Count */
+#paletteCount {
+    color: var(--text-secondary);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .color-swatch {
+        height: 80px;
+    }
+    
+    .color-picker-input {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .category-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .code-block {
+        font-size: 12px;
+        padding: 12px;
+    }
+}
+
+@media (max-width: 640px) {
+    .color-swatch {
+        height: 60px;
+    }
+    
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-3 {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-tertiary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-secondary);
+}

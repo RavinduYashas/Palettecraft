@@ -4,154 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Design Resources | Palettecraft</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            color: #334155;
-        }
-        
-        h1, h2, h3, h4 {
-            font-family: 'Merriweather', serif;
-            font-weight: 700;
-        }
-        
-        .btn-primary {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-            text-decoration: none;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
-        }
-        
-        .nav-link {
-            color: #475569;
-            font-weight: 500;
-            text-decoration: none;
-            position: relative;
-            padding-bottom: 4px;
-        }
-        
-        .nav-link:hover {
-            color: #6366f1;
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #6366f1;
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .resource-card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-        
-        .resource-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            border-color: #c7d2fe;
-        }
-        
-        .tool-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            border: 1px solid #e2e8f0;
-            transition: all 0.3s ease;
-        }
-        
-        .tool-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        footer a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        footer a:hover {
-            color: white;
-        }
-        
-        .color-circle {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            display: inline-block;
-            margin-right: 8px;
-            vertical-align: middle;
-        }
-        
-        .contrast-ratio {
-            font-family: 'Courier New', monospace;
-            background-color: #1e293b;
-            color: #e2e8f0;
-            padding: 8px 12px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
-        
-        .contrast-good {
-            color: #10b981;
-            font-weight: 600;
-        }
-        
-        .contrast-poor {
-            color: #ef4444;
-            font-weight: 600;
-        }
-    </style>
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Page-specific CSS -->
+    <link rel="stylesheet" href="css/resources.css">
 </head>
-<body>
+<body data-theme="light">
     <!-- Header -->
-    <header class="bg-white shadow-sm">
+    <header class="bg-secondary shadow-sm">
         <div class="container mx-auto py-4">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
                 <div class="flex items-center space-x-3">
                     <a href="index.html" class="flex items-center space-x-3">
-                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #6366f1, #8b5cf6)">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center logo-gradient">
                             <i class="fas fa-palette text-white text-xl"></i>
                         </div>
-                        <h1 class="text-2xl font-bold text-gray-800">Palettecraft</h1>
+                        <h1 class="text-2xl font-bold text-heading">Palettecraft</h1>
                     </a>
                 </div>
                 
@@ -160,29 +35,39 @@
                     <a href="index.html" class="nav-link">Home</a>
                     <a href="colors.html" class="nav-link">Color Palettes</a>
                     <a href="fonts.html" class="nav-link">Font Styles</a>
-                    <a href="resources.html" class="nav-link text-indigo-600">Resources</a>
+                    <a href="resources.html" class="nav-link active">Resources</a>
                 </nav>
                 
-                <!-- CTA Buttons -->
+                <!-- CTA Buttons and Theme Toggle -->
                 <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle -->
+                    <div class="theme-toggle-container">
+                        <span class="theme-label hidden md:block">Light</span>
+                        <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+                            <i class="fas fa-sun"></i>
+                            <i class="fas fa-moon"></i>
+                        </button>
+                        <span class="theme-label hidden md:block">Dark</span>
+                    </div>
+                    
                     <a href="colors.html" class="btn-primary">
                         <i class="fas fa-play-circle mr-2"></i> Try Tools
                     </a>
                 </div>
                 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                <button id="mobile-menu-button" class="md:hidden">
                     <i class="fas fa-bars text-xl"></i>
                 </button>
             </div>
             
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden mt-4 md:hidden">
+            <div id="mobile-menu" class="hidden mt-4 md:hidden mobile-menu">
                 <div class="flex flex-col space-y-3">
-                    <a href="index.html" class="font-medium text-gray-700 hover:text-indigo-600 py-2">Home</a>
-                    <a href="colors.html" class="font-medium text-gray-700 hover:text-indigo-600 py-2">Color Palettes</a>
-                    <a href="fonts.html" class="font-medium text-gray-700 hover:text-indigo-600 py-2">Font Styles</a>
-                    <a href="resources.html" class="font-medium text-gray-700 hover:text-indigo-600 py-2">Resources</a>
+                    <a href="index.html" class="font-medium hover:text-accent py-2 font-raleway">Home</a>
+                    <a href="colors.html" class="font-medium hover:text-accent py-2 font-raleway">Color Palettes</a>
+                    <a href="fonts.html" class="font-medium hover:text-accent py-2 font-raleway">Font Styles</a>
+                    <a href="resources.html" class="font-medium hover:text-accent py-2 font-raleway active">Resources</a>
                 </div>
             </div>
         </div>
@@ -191,55 +76,97 @@
     <!-- Main Content -->
     <main class="container mx-auto py-8">
         <div class="text-center mb-12">
-            <h1 class="text-4xl font-bold text-gray-800 mb-4">Design Resources & Tools</h1>
-            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+            <h1 class="text-4xl font-bold text-heading mb-4">Design Resources & Tools</h1>
+            <p class="text-xl text-secondary max-w-3xl mx-auto">
                 Learn design principles and use helpful tools to create better websites.
             </p>
         </div>
 
         <!-- Resources Grid -->
-        <div class="mb-12">
-            <h2 class="text-2xl font-bold mb-6">Learning Resources</h2>
+        <div class="mb-12" id="resources">
+            <h2 class="text-2xl font-bold mb-6 text-heading">Learning Resources</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Resource 1 -->
                 <div class="resource-card">
-                    <div class="text-indigo-600 text-3xl mb-4">
+                    <div class="accent-primary text-3xl mb-4">
                         <i class="fas fa-book"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Color Theory Guide</h3>
-                    <p class="text-gray-600 mb-4">
+                    <h3 class="text-xl font-bold mb-3 text-heading">Color Theory Guide</h3>
+                    <p class="text-secondary mb-4">
                         Learn the fundamentals of color theory, color psychology, and how to create harmonious color palettes for web design.
                     </p>
-                    <a href="#" class="text-indigo-600 font-medium inline-flex items-center">
+                    <a href="#" class="accent-primary font-medium inline-flex items-center hover:underline">
                         Read Guide <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
                 
                 <!-- Resource 2 -->
                 <div class="resource-card">
-                    <div class="text-indigo-600 text-3xl mb-4">
+                    <div class="accent-primary text-3xl mb-4">
                         <i class="fas fa-typography"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Typography Guide</h3>
-                    <p class="text-gray-600 mb-4">
+                    <h3 class="text-xl font-bold mb-3 text-heading">Typography Guide</h3>
+                    <p class="text-secondary mb-4">
                         Understand font pairing, hierarchy, readability, and best practices for typography in web design.
                     </p>
-                    <a href="#" class="text-indigo-600 font-medium inline-flex items-center">
+                    <a href="#" class="accent-primary font-medium inline-flex items-center hover:underline">
                         Read Guide <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
                 
                 <!-- Resource 3 -->
                 <div class="resource-card">
-                    <div class="text-indigo-600 text-3xl mb-4">
+                    <div class="accent-primary text-3xl mb-4">
                         <i class="fas fa-video"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3">Video Tutorials</h3>
-                    <p class="text-gray-600 mb-4">
+                    <h3 class="text-xl font-bold mb-3 text-heading">Video Tutorials</h3>
+                    <p class="text-secondary mb-4">
                         Step-by-step video tutorials on using Palettecraft tools and implementing designs in your projects.
                     </p>
-                    <a href="#" class="text-indigo-600 font-medium inline-flex items-center">
+                    <a href="#" class="accent-primary font-medium inline-flex items-center hover:underline">
                         Watch Now <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Resource 4 -->
+                <div class="resource-card">
+                    <div class="accent-primary text-3xl mb-4">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-heading">Responsive Design</h3>
+                    <p class="text-secondary mb-4">
+                        Learn how to create websites that work perfectly on all devices, from mobile phones to desktop computers.
+                    </p>
+                    <a href="#" class="accent-primary font-medium inline-flex items-center hover:underline">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Resource 5 -->
+                <div class="resource-card">
+                    <div class="accent-primary text-3xl mb-4">
+                        <i class="fas fa-universal-access"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-heading">Accessibility Guide</h3>
+                    <p class="text-secondary mb-4">
+                        Make your websites accessible to everyone with proper color contrast, keyboard navigation, and ARIA labels.
+                    </p>
+                    <a href="#" class="accent-primary font-medium inline-flex items-center hover:underline">
+                        Read Guide <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Resource 6 -->
+                <div class="resource-card">
+                    <div class="accent-primary text-3xl mb-4">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-heading">Performance Optimization</h3>
+                    <p class="text-secondary mb-4">
+                        Techniques to make your websites load faster and perform better for improved user experience.
+                    </p>
+                    <a href="#" class="accent-primary font-medium inline-flex items-center hover:underline">
+                        Learn More <i class="fas fa-arrow-right ml-2"></i>
                     </a>
                 </div>
             </div>
@@ -247,26 +174,75 @@
 
         <!-- Design Tools -->
         <div class="mb-12" id="tools">
-            <h2 class="text-2xl font-bold mb-6">Design Tools</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Contrast Checker -->
+            <h2 class="text-2xl font-bold mb-6 text-heading">Design Tools</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Image Color Extractor -->
                 <div class="tool-card">
-                    <h3 class="text-lg font-bold mb-4">Contrast Checker</h3>
-                    <p class="text-gray-600 mb-4">Check if your text has sufficient contrast against background colors for accessibility.</p>
+                    <h3 class="text-lg font-bold mb-4 text-heading">Image Color Extractor</h3>
+                    <p class="text-secondary mb-4">Upload an image and extract the dominant colors to create a color palette.</p>
                     
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Text Color</label>
-                        <div class="flex items-center">
-                            <input type="color" id="textColor" value="#000000" class="w-10 h-10 cursor-pointer mr-3">
-                            <input type="text" id="textColorHex" value="#000000" class="p-2 border rounded w-32">
+                        <div class="image-upload-area border-2 border-dashed rounded-lg p-6 text-center cursor-pointer hover:border-accent transition-all duration-300" id="imageUploadArea">
+                            <i class="fas fa-cloud-upload-alt text-3xl text-secondary mb-2"></i>
+                            <p class="text-secondary">Click to upload image or drag & drop</p>
+                            <p class="text-xs text-secondary mt-2">Supports JPG, PNG, WEBP (Max 5MB)</p>
+                            <input type="file" id="imageUpload" accept="image/*" class="hidden">
                         </div>
                     </div>
                     
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Background Color</label>
+                        <label class="block text-sm font-medium mb-2 text-heading">Number of Colors:</label>
+                        <select id="colorCount" class="w-full p-2 border rounded-lg select-input">
+                            <option value="5">5 Colors</option>
+                            <option value="8" selected>8 Colors</option>
+                            <option value="10">10 Colors</option>
+                            <option value="12">12 Colors</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <button id="extractColors" class="btn-primary w-full" disabled>
+                            <i class="fas fa-magic mr-2"></i> Extract Colors
+                        </button>
+                    </div>
+                    
+                    <div id="extractedColors" class="hidden">
+                        <h4 class="font-bold mb-3 text-heading">Extracted Colors:</h4>
+                        <div id="colorPalette" class="grid grid-cols-4 gap-2 mb-4">
+                            <!-- Colors will appear here -->
+                        </div>
+                        <button id="savePalette" class="btn-secondary w-full btn-sm">
+                            <i class="fas fa-save mr-2"></i> Save as Palette
+                        </button>
+                    </div>
+                    
+                    <div id="imagePreview" class="hidden mt-4">
+                        <h4 class="font-bold mb-2 text-heading">Image Preview:</h4>
+                        <div class="relative">
+                            <img id="previewImage" class="w-full h-48 object-cover rounded-lg">
+                            <canvas id="imageCanvas" class="hidden"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contrast Checker -->
+                <div class="tool-card">
+                    <h3 class="text-lg font-bold mb-4 text-heading">Contrast Checker</h3>
+                    <p class="text-secondary mb-4">Check if your text has sufficient contrast against background colors for accessibility.</p>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-2 text-heading">Text Color</label>
                         <div class="flex items-center">
-                            <input type="color" id="bgColor" value="#ffffff" class="w-10 h-10 cursor-pointer mr-3">
-                            <input type="text" id="bgColorHex" value="#ffffff" class="p-2 border rounded w-32">
+                            <input type="color" id="textColor" value="#000000" class="color-input cursor-pointer mr-3">
+                            <input type="text" id="textColorHex" value="#000000" class="color-hex-input flex-grow">
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium mb-2 text-heading">Background Color</label>
+                        <div class="flex items-center">
+                            <input type="color" id="bgColor" value="#ffffff" class="color-input cursor-pointer mr-3">
+                            <input type="text" id="bgColorHex" value="#ffffff" class="color-hex-input flex-grow">
                         </div>
                     </div>
                     
@@ -277,18 +253,18 @@
                     </div>
                     
                     <div id="contrastResult" class="hidden">
-                        <div class="p-3 border rounded-lg mb-3">
+                        <div class="p-3 border rounded-lg mb-3 info-card">
                             <div class="flex justify-between items-center mb-2">
-                                <span class="font-medium">Contrast Ratio:</span>
+                                <span class="font-medium text-heading">Contrast Ratio:</span>
                                 <span class="contrast-ratio" id="contrastRatio">21:1</span>
                             </div>
                             <div class="flex justify-between items-center">
-                                <span class="font-medium">WCAG Rating:</span>
+                                <span class="font-medium text-heading">WCAG Rating:</span>
                                 <span class="contrast-good" id="wcagRating">AAA</span>
                             </div>
                         </div>
                         
-                        <div class="p-3 border rounded-lg" id="previewBox">
+                        <div class="p-3 border rounded-lg preview-box" id="previewBox">
                             <p id="previewText" class="text-lg">Sample text for contrast preview</p>
                         </div>
                     </div>
@@ -296,14 +272,14 @@
                 
                 <!-- Color Picker -->
                 <div class="tool-card">
-                    <h3 class="text-lg font-bold mb-4">Color Picker & Converter</h3>
-                    <p class="text-gray-600 mb-4">Pick colors and convert between different color formats (HEX, RGB, HSL).</p>
+                    <h3 class="text-lg font-bold mb-4 text-heading">Color Picker & Converter</h3>
+                    <p class="text-secondary mb-4">Pick colors and convert between different color formats (HEX, RGB, HSL).</p>
                     
                     <div class="mb-4">
-                        <label class="block text-gray-700 text-sm font-medium mb-2">Select Color</label>
+                        <label class="block text-sm font-medium mb-2 text-heading">Select Color</label>
                         <div class="flex items-center">
-                            <input type="color" id="colorPicker" value="#6366f1" class="w-10 h-10 cursor-pointer mr-3">
-                            <input type="text" id="colorHex" value="#6366f1" class="p-2 border rounded flex-grow">
+                            <input type="color" id="colorPicker" value="#6366f1" class="color-input cursor-pointer mr-3">
+                            <input type="text" id="colorHex" value="#6366f1" class="color-hex-input flex-grow">
                         </div>
                     </div>
                     
@@ -315,53 +291,137 @@
                     
                     <div id="colorFormats" class="space-y-2">
                         <div class="flex justify-between items-center">
-                            <span class="font-medium">HEX:</span>
+                            <span class="font-medium text-heading">HEX:</span>
                             <span class="font-mono" id="hexValue">#6366f1</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="font-medium">RGB:</span>
+                            <span class="font-medium text-heading">RGB:</span>
                             <span class="font-mono" id="rgbValue">rgb(99, 102, 241)</span>
                         </div>
                         <div class="flex justify-between items-center">
-                            <span class="font-medium">HSL:</span>
+                            <span class="font-medium text-heading">HSL:</span>
                             <span class="font-mono" id="hslValue">hsl(239, 83%, 67%)</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="font-medium text-heading">CMYK:</span>
+                            <span class="font-mono" id="cmykValue">59, 58, 0, 5</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
+        <!-- Additional Tools -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold mb-6 text-heading">More Tools</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="tool-card text-center">
+                    <div class="tool-icon w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-ruler-combined text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-bold mb-2 text-heading">Spacing Scale</h3>
+                    <p class="text-secondary text-sm">Generate consistent spacing scales for your design system</p>
+                </div>
+                
+                <div class="tool-card text-center">
+                    <div class="tool-icon w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-shapes text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-bold mb-2 text-heading">Shadow Generator</h3>
+                    <p class="text-secondary text-sm">Create custom box shadows with interactive controls</p>
+                </div>
+                
+                <div class="tool-card text-center">
+                    <div class="tool-icon w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-border-style text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-bold mb-2 text-heading">Border Radius</h3>
+                    <p class="text-secondary text-sm">Generate border radius values for rounded corners</p>
+                </div>
+                
+                <div class="tool-card text-center">
+                    <div class="tool-icon w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-3">
+                        <i class="fas fa-gradient text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-bold mb-2 text-heading">Gradient Generator</h3>
+                    <p class="text-secondary text-sm">Create beautiful CSS gradients with color stops</p>
+                </div>
+            </div>
+        </div>
+
         <!-- About Section -->
         <div class="mb-12" id="about">
-            <h2 class="text-2xl font-bold mb-6">About Palettecraft</h2>
-            <div class="bg-white rounded-xl shadow-sm p-6">
-                <p class="text-gray-700 mb-4">
+            <h2 class="text-2xl font-bold mb-6 text-heading">About Palettecraft</h2>
+            <div class="bg-secondary rounded-xl shadow-sm p-6">
+                <p class="text-secondary mb-4">
                     Palettecraft is a free tool for designers and developers to find perfect color palettes and font combinations for their web projects. Our mission is to make good design accessible to everyone, regardless of their design experience.
                 </p>
-                <p class="text-gray-700 mb-4">
+                <p class="text-secondary mb-4">
                     We believe that beautiful websites shouldn't require expensive design software or years of experience. With Palettecraft, you can create professional-looking designs by simply selecting from curated options that work well together.
                 </p>
-                <p class="text-gray-700">
+                <p class="text-secondary mb-4">
                     All our tools are completely free to use, with no sign-up required. We're committed to keeping Palettecraft accessible to the design community.
                 </p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-center">
+                    <div>
+                        <div class="text-2xl font-bold accent-primary">100%</div>
+                        <div class="text-sm text-secondary">Free to Use</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold accent-secondary">120+</div>
+                        <div class="text-sm text-secondary">Google Fonts</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold accent-primary">36+</div>
+                        <div class="text-sm text-secondary">Color Palettes</div>
+                    </div>
+                    <div>
+                        <div class="text-2xl font-bold accent-secondary">10+</div>
+                        <div class="text-sm text-secondary">Design Tools</div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <!-- Contact Section -->
         <div class="mb-12" id="contact">
-            <h2 class="text-2xl font-bold mb-6">Contact</h2>
-            <div class="bg-white rounded-xl shadow-sm p-6">
-                <p class="text-gray-700 mb-4">
+            <h2 class="text-2xl font-bold mb-6 text-heading">Contact</h2>
+            <div class="bg-secondary rounded-xl shadow-sm p-6">
+                <p class="text-secondary mb-6">
                     Have questions, suggestions, or found a bug? We'd love to hear from you!
                 </p>
-                <div class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                        <h3 class="font-bold text-gray-800 mb-2">Email</h3>
-                        <p class="text-gray-600">contact@palettecraft.dev</p>
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center mr-3">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-heading mb-1">Email</h3>
+                                <p class="text-secondary">contact@palettecraft.dev</p>
+                            </div>
+                        </div>
                     </div>
                     <div>
-                        <h3 class="font-bold text-gray-800 mb-2">Feedback</h3>
-                        <p class="text-gray-600">We're constantly improving Palettecraft based on user feedback. Let us know what features you'd like to see!</p>
+                        <div class="flex items-center mb-3">
+                            <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center mr-3">
+                                <i class="fas fa-comments text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-heading mb-1">Feedback</h3>
+                                <p class="text-secondary">We value your suggestions!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6">
+                    <h3 class="font-bold text-heading mb-3">Feature Requests</h3>
+                    <p class="text-secondary mb-4">What features would you like to see in Palettecraft? We're constantly improving based on user feedback.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-tertiary text-secondary rounded-full text-sm">More color palettes</span>
+                        <span class="px-3 py-1 bg-tertiary text-secondary rounded-full text-sm">Export to Figma</span>
+                        <span class="px-3 py-1 bg-tertiary text-secondary rounded-full text-sm">CSS code generator</span>
+                        <span class="px-3 py-1 bg-tertiary text-secondary rounded-full text-sm">Mobile app</span>
                     </div>
                 </div>
             </div>
@@ -369,23 +429,35 @@
 
         <!-- Privacy Section -->
         <div id="privacy">
-            <h2 class="text-2xl font-bold mb-6">Privacy Policy</h2>
-            <div class="bg-white rounded-xl shadow-sm p-6">
-                <p class="text-gray-700 mb-4">
+            <h2 class="text-2xl font-bold mb-6 text-heading">Privacy Policy</h2>
+            <div class="bg-secondary rounded-xl shadow-sm p-6">
+                <p class="text-secondary mb-6">
                     Palettecraft is committed to protecting your privacy. We don't collect personal information, and we don't use cookies to track you.
                 </p>
-                <div class="space-y-4">
+                <div class="space-y-6">
                     <div>
-                        <h3 class="font-bold text-gray-800 mb-2">Data Collection</h3>
-                        <p class="text-gray-600">We don't collect any personal data. All color and font selections are processed locally in your browser.</p>
+                        <h3 class="font-bold text-heading mb-2 flex items-center">
+                            <i class="fas fa-shield-alt mr-2 accent-primary"></i> Data Collection
+                        </h3>
+                        <p class="text-secondary">We don't collect any personal data. All color and font selections are processed locally in your browser. Images uploaded for color extraction are processed entirely on your device and never sent to our servers.</p>
                     </div>
                     <div>
-                        <h3 class="font-bold text-gray-800 mb-2">Third-Party Services</h3>
-                        <p class="text-gray-600">We use Google Fonts to load font families. This is subject to Google's privacy policy.</p>
+                        <h3 class="font-bold text-heading mb-2 flex items-center">
+                            <i class="fas fa-external-link-alt mr-2 accent-primary"></i> Third-Party Services
+                        </h3>
+                        <p class="text-secondary">We use Google Fonts to load font families. This is subject to Google's privacy policy. No other third-party services are used.</p>
                     </div>
                     <div>
-                        <h3 class="font-bold text-gray-800 mb-2">Changes to This Policy</h3>
-                        <p class="text-gray-600">We may update this privacy policy from time to time. Any changes will be posted on this page.</p>
+                        <h3 class="font-bold text-heading mb-2 flex items-center">
+                            <i class="fas fa-sync-alt mr-2 accent-primary"></i> Changes to This Policy
+                        </h3>
+                        <p class="text-secondary">We may update this privacy policy from time to time. Any changes will be posted on this page. Continued use of Palettecraft after changes constitutes acceptance of the new policy.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-heading mb-2 flex items-center">
+                            <i class="fas fa-calendar-alt mr-2 accent-primary"></i> Last Updated
+                        </h3>
+                        <p class="text-secondary">December 2023</p>
                     </div>
                 </div>
             </div>
@@ -393,20 +465,31 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 pt-12 pb-8 mt-12">
+    <footer class="footer pt-12 pb-8 mt-12">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
                 <!-- Column 1 -->
                 <div>
                     <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #6366f1, #8b5cf6)">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center logo-gradient">
                             <i class="fas fa-palette text-white text-xl"></i>
                         </div>
                         <h3 class="text-2xl font-bold text-white">Palettecraft</h3>
                     </div>
-                    <p class="mb-6">
+                    <p class="mb-6 footer-text">
                         Free tools for designers and developers to find perfect colors and fonts for web projects.
                     </p>
+                    <div class="flex space-x-3">
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-accent transition-colors">
+                            <i class="fab fa-github text-white"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-accent transition-colors">
+                            <i class="fab fa-twitter text-white"></i>
+                        </a>
+                        <a href="#" class="w-8 h-8 rounded-full bg-gray-700 flex items-center justify-center hover:bg-accent transition-colors">
+                            <i class="fab fa-discord text-white"></i>
+                        </a>
+                    </div>
                 </div>
                 
                 <!-- Column 2 -->
@@ -415,6 +498,7 @@
                     <ul class="space-y-2">
                         <li><a href="colors.html">Color Palette Generator</a></li>
                         <li><a href="fonts.html">Font Pairing Tool</a></li>
+                        <li><a href="#tools">Image Color Extractor</a></li>
                         <li><a href="#tools">Contrast Checker</a></li>
                         <li><a href="#tools">Color Picker</a></li>
                     </ul>
@@ -426,8 +510,9 @@
                     <ul class="space-y-2">
                         <li><a href="#resources">Color Theory Guide</a></li>
                         <li><a href="#resources">Typography Guide</a></li>
-                        <li><a href="#resources">Web Design Tips</a></li>
+                        <li><a href="#resources">Accessibility Guide</a></li>
                         <li><a href="#resources">Video Tutorials</a></li>
+                        <li><a href="#resources">Design System Tools</a></li>
                     </ul>
                 </div>
                 
@@ -438,205 +523,21 @@
                         <li><a href="#about">About Palettecraft</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="#privacy">Privacy Policy</a></li>
+                        <li><a href="#contact">Feature Requests</a></li>
                     </ul>
                 </div>
             </div>
             
-            <div class="border-t border-gray-800 pt-8 text-center">
+            <div class="border-t border-gray-700 pt-8 text-center footer-text">
                 <p>&copy; 2023 Palettecraft. All rights reserved. A free tool for the design community.</p>
+                <p class="text-gray-500 text-sm mt-2">Made with <i class="fas fa-heart text-red-400"></i> for designers and developers</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile menu toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenu.classList.toggle('hidden');
-            
-            const icon = this.querySelector('i');
-            if (icon.classList.contains('fa-bars')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-
-        // Contrast Checker
-        const textColorInput = document.getElementById('textColor');
-        const textColorHex = document.getElementById('textColorHex');
-        const bgColorInput = document.getElementById('bgColor');
-        const bgColorHex = document.getElementById('bgColorHex');
-        const checkContrastBtn = document.getElementById('checkContrast');
-        const contrastResult = document.getElementById('contrastResult');
-        const contrastRatio = document.getElementById('contrastRatio');
-        const wcagRating = document.getElementById('wcagRating');
-        const previewBox = document.getElementById('previewBox');
-        const previewText = document.getElementById('previewText');
-        
-        // Sync color inputs
-        textColorInput.addEventListener('input', function() {
-            textColorHex.value = this.value.toUpperCase();
-        });
-        
-        textColorHex.addEventListener('input', function() {
-            const color = this.value;
-            if (/^#[0-9A-F]{6}$/i.test(color)) {
-                textColorInput.value = color;
-            }
-        });
-        
-        bgColorInput.addEventListener('input', function() {
-            bgColorHex.value = this.value.toUpperCase();
-        });
-        
-        bgColorHex.addEventListener('input', function() {
-            const color = this.value;
-            if (/^#[0-9A-F]{6}$/i.test(color)) {
-                bgColorInput.value = color;
-            }
-        });
-        
-        // Check contrast function
-        checkContrastBtn.addEventListener('click', function() {
-            const textColor = textColorHex.value;
-            const bgColor = bgColorHex.value;
-            
-            // Calculate contrast ratio (simplified)
-            const textRGB = hexToRgb(textColor);
-            const bgRGB = hexToRgb(bgColor);
-            
-            const textLuminance = calculateLuminance(textRGB);
-            const bgLuminance = calculateLuminance(bgRGB);
-            
-            const lighter = Math.max(textLuminance, bgLuminance);
-            const darker = Math.min(textLuminance, bgLuminance);
-            
-            const ratio = (lighter + 0.05) / (darker + 0.05);
-            const roundedRatio = ratio.toFixed(2);
-            
-            // Update display
-            contrastRatio.textContent = `${roundedRatio}:1`;
-            
-            // Determine WCAG rating
-            let rating = "Fail";
-            let ratingClass = "contrast-poor";
-            
-            if (ratio >= 7) {
-                rating = "AAA";
-                ratingClass = "contrast-good";
-            } else if (ratio >= 4.5) {
-                rating = "AA";
-                ratingClass = "contrast-good";
-            } else if (ratio >= 3) {
-                rating = "AA Large";
-                ratingClass = "contrast-good";
-            }
-            
-            wcagRating.textContent = rating;
-            wcagRating.className = ratingClass;
-            
-            // Update preview
-            previewBox.style.backgroundColor = bgColor;
-            previewText.style.color = textColor;
-            previewText.textContent = `This text has a contrast ratio of ${roundedRatio}:1 (${rating})`;
-            
-            // Show result
-            contrastResult.classList.remove('hidden');
-        });
-        
-        // Color converter
-        const colorPicker = document.getElementById('colorPicker');
-        const colorHex = document.getElementById('colorHex');
-        const convertColorBtn = document.getElementById('convertColor');
-        const hexValue = document.getElementById('hexValue');
-        const rgbValue = document.getElementById('rgbValue');
-        const hslValue = document.getElementById('hslValue');
-        
-        colorPicker.addEventListener('input', function() {
-            colorHex.value = this.value.toUpperCase();
-            updateColorFormats(this.value);
-        });
-        
-        colorHex.addEventListener('input', function() {
-            const color = this.value;
-            if (/^#[0-9A-F]{6}$/i.test(color)) {
-                colorPicker.value = color;
-                updateColorFormats(color);
-            }
-        });
-        
-        convertColorBtn.addEventListener('click', function() {
-            updateColorFormats(colorHex.value);
-        });
-        
-        function updateColorFormats(hexColor) {
-            hexValue.textContent = hexColor.toUpperCase();
-            
-            const rgb = hexToRgb(hexColor);
-            rgbValue.textContent = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
-            
-            const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
-            hslValue.textContent = `hsl(${Math.round(hsl.h)}, ${Math.round(hsl.s)}%, ${Math.round(hsl.l)}%)`;
-        }
-        
-        // Helper functions for color calculations
-        function hexToRgb(hex) {
-            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-            return result ? {
-                r: parseInt(result[1], 16),
-                g: parseInt(result[2], 16),
-                b: parseInt(result[3], 16)
-            } : { r: 0, g: 0, b: 0 };
-        }
-        
-        function calculateLuminance(rgb) {
-            const rsrgb = rgb.r / 255;
-            const gsrgb = rgb.g / 255;
-            const bsrgb = rgb.b / 255;
-            
-            const r = rsrgb <= 0.03928 ? rsrgb / 12.92 : Math.pow((rsrgb + 0.055) / 1.055, 2.4);
-            const g = gsrgb <= 0.03928 ? gsrgb / 12.92 : Math.pow((gsrgb + 0.055) / 1.055, 2.4);
-            const b = bsrgb <= 0.03928 ? bsrgb / 12.92 : Math.pow((bsrgb + 0.055) / 1.055, 2.4);
-            
-            return 0.2126 * r + 0.7152 * g + 0.0722 * b;
-        }
-        
-        function rgbToHsl(r, g, b) {
-            r /= 255;
-            g /= 255;
-            b /= 255;
-            
-            const max = Math.max(r, g, b);
-            const min = Math.min(r, g, b);
-            let h, s, l = (max + min) / 2;
-            
-            if (max === min) {
-                h = s = 0; // achromatic
-            } else {
-                const d = max - min;
-                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
-                
-                switch (max) {
-                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
-                    case g: h = (b - r) / d + 2; break;
-                    case b: h = (r - g) / d + 4; break;
-                }
-                
-                h /= 6;
-            }
-            
-            return {
-                h: h * 360,
-                s: s * 100,
-                l: l * 100
-            };
-        }
-        
-        // Initialize
-        updateColorFormats(colorHex.value);
-    </script>
+    <!-- Global JS -->
+    <script src="js/main.js"></script>
+    <!-- Page-specific JS -->
+    <script src="js/resources.js"></script>
 </body>
 </html>
