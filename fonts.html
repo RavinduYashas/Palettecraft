@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Font Pairing Tool | Palettecraft</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@300;400;700&family=EB+Garamond:wght@400;500;700&family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@300;400;500&family=Great+Vibes&family=Dancing+Script:wght@400;700&family=Raleway:wght@300;400;500;600&family=Lora:wght@400;700&family=Cardo:wght@400;700&family=Old+Standard+TT:wght@400;700&family=Prata&family=Marcellus&family=Italiana&family=Abril+Fatface&family=Bodoni+Moda:wght@400;700&family=DM+Serif+Display&family=Gilda+Display&family=Petit+Formal+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #334155;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+        }
+        
+        .font-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .font-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #c7d2fe;
+        }
+        
+        .font-card.selected {
+            border-color: #6366f1;
+            border-width: 2px;
+            background-color: #f8fafc;
+        }
+        
+        .nav-link {
+            color: #475569;
+            font-weight: 500;
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 4px;
+        }
+        
+        .nav-link:hover {
+            color: #6366f1;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #6366f1;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        footer a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        footer a:hover {
+            color: white;
+        }
+        
+        .code-block {
+            font-family: 'Courier New', monospace;
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+        }
+        
+        .font-sample {
+            font-size: 1.5rem;
+            line-height: 1.4;
+            margin-bottom: 10px;
+        }
+        
+        .font-category {
+            display: inline-block;
+            background: #f1f5f9;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto py-4">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3">
+                    <a href="index.html" class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #6366f1, #8b5cf6)">
+                            <i class="fas fa-palette text-white text-xl"></i>
+                        </div>
+                        <h1 class="text-2xl font-bold text-gray-800">Palettecraft</h1>
+                    </a>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="colors.html" class="nav-link">Color Palettes</a>
+                    <a href="fonts.html" class="nav-link text-indigo-600">Font Styles</a>
+                    <a href="resources.html" class="nav-link">Resources</a>
+                </nav>
+                
+                <!-- CTA Buttons -->
+                <div class="flex items-center space-x-4">
+                    <a href="colors.html" class="btn-primary">
+                        <i class="fas fa-palette mr-2"></i> Try Color Tool
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden mt-4 md:hidden">
+                <div class="flex flex-col space-y-3">
+                    <a href="index.html" class="font-medium text-gray-700 hover:text-indigo-600 py-2">Home</a>
+                    <a href="colors.html" class="font-medium text-gray-700 hover:text-indigo-600 py-2">Color Palettes</a>
+                    <a href="fonts.html" class="font-medium text-gray-700 hover:text-indigo-600 py-2">Font Styles</a>
+                    <a href="resources.html" class="font-medium text-gray-700 hover:text-indigo-600 py-2">Resources</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto py-8">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-bold text-gray-800 mb-4">Font Pairing Tool</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Find the perfect font combinations for your website. Choose from curated pairings or create your own.
+            </p>
+        </div>
+
+        <!-- Font Selection Controls -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-bold mb-6">Create Your Font Combination</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2" for="heading-font">Heading Font</label>
+                    <select id="heading-font" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="'Merriweather', serif">Merriweather</option>
+                        <option value="'Playfair Display', serif">Playfair Display</option>
+                        <option value="'Cormorant Garamond', serif">Cormorant Garamond</option>
+                        <option value="'EB Garamond', serif">EB Garamond</option>
+                        <option value="'Prata', serif">Prata</option>
+                        <option value="'Montserrat', sans-serif">Montserrat</option>
+                        <option value="'Raleway', sans-serif">Raleway</option>
+                        <option value="'Abril Fatface', cursive">Abril Fatface</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2" for="body-font">Body Font</label>
+                    <select id="body-font" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="'Inter', sans-serif">Inter</option>
+                        <option value="'Lora', serif">Lora</option>
+                        <option value="'Libre Baskerville', serif">Libre Baskerville</option>
+                        <option value="'Raleway', sans-serif">Raleway</option>
+                        <option value="'Montserrat', sans-serif">Montserrat</option>
+                        <option value="'Open Sans', sans-serif">Open Sans</option>
+                        <option value="'Cormorant Garamond', serif">Cormorant Garamond</option>
+                        <option value="'Cardo', serif">Cardo</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Live Preview -->
+            <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4">Live Preview</h3>
+                <div class="preview-content">
+                    <h1 id="preview-heading" class="text-3xl md:text-4xl font-bold mb-4" style="font-family: 'Merriweather', serif;">
+                        Beautiful Typography for Your Website
+                    </h1>
+                    <p id="preview-subheading" class="text-xl text-gray-600 mb-6" style="font-family: 'Merriweather', serif;">
+                        The perfect font combination enhances readability and creates visual harmony
+                    </p>
+                    <div id="preview-body" class="text-gray-700" style="font-family: 'Inter', sans-serif;">
+                        <p class="mb-4">This is how your chosen fonts will look together on your website. Good typography is essential for creating a professional and engaging user experience. The right font pairing can significantly improve readability and establish your brand's visual identity.</p>
+                        <p>When selecting fonts, consider contrast, readability, and the emotional tone you want to convey. Serif fonts often work well for headings, while sans-serif fonts are typically more readable for body text at smaller sizes.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Implementation Code -->
+            <div class="bg-blue-50 p-4 rounded-lg">
+                <h4 class="font-bold mb-2">Implementation Code:</h4>
+                <pre class="code-block" id="implementationCode"><!-- Add to your HTML head -->
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Merriweather', serif;
+}</pre>
+                <button id="copyCode" class="mt-2 btn-primary">
+                    <i class="far fa-copy mr-2"></i> Copy Code
+                </button>
+            </div>
+        </div>
+
+        <!-- Popular Font Pairings -->
+        <div class="mb-12">
+            <h2 class="text-2xl font-bold mb-6">Popular Font Pairings</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Pairing 1 -->
+                <div class="font-card" data-pairing="pairing1">
+                    <div class="font-sample" style="font-family: 'Playfair Display', serif;">Playfair Display</div>
+                    <div class="font-sample" style="font-family: 'Inter', sans-serif; font-size: 1rem;">+ Inter</div>
+                    <p class="text-gray-600 text-sm mb-3">Elegant serif with clean sans-serif</p>
+                    <span class="font-category">Classic • Professional</span>
+                </div>
+                
+                <!-- Pairing 2 -->
+                <div class="font-card" data-pairing="pairing2">
+                    <div class="font-sample" style="font-family: 'Montserrat', sans-serif;">Montserrat</div>
+                    <div class="font-sample" style="font-family: 'Merriweather', serif; font-size: 1rem;">+ Merriweather</div>
+                    <p class="text-gray-600 text-sm mb-3">Modern geometric with traditional serif</p>
+                    <span class="font-category">Modern • Versatile</span>
+                </div>
+                
+                <!-- Pairing 3 -->
+                <div class="font-card" data-pairing="pairing3">
+                    <div class="font-sample" style="font-family: 'Cormorant Garamond', serif;">Cormorant Garamond</div>
+                    <div class="font-sample" style="font-family: 'Lora', serif; font-size: 1rem;">+ Lora</div>
+                    <p class="text-gray-600 text-sm mb-3">Elegant serif pairing</p>
+                    <span class="font-category">Elegant • Literary</span>
+                </div>
+                
+                <!-- Pairing 4 -->
+                <div class="font-card" data-pairing="pairing4">
+                    <div class="font-sample" style="font-family: 'Raleway', sans-serif;">Raleway</div>
+                    <div class="font-sample" style="font-family: 'Open Sans', sans-serif; font-size: 1rem;">+ Open Sans</div>
+                    <p class="text-gray-600 text-sm mb-3">Clean sans-serif pairing</p>
+                    <span class="font-category">Modern • Clean</span>
+                </div>
+                
+                <!-- Pairing 5 -->
+                <div class="font-card" data-pairing="pairing5">
+                    <div class="font-sample" style="font-family: 'Abril Fatface', cursive;">Abril Fatface</div>
+                    <div class="font-sample" style="font-family: 'Roboto', sans-serif; font-size: 1rem;">+ Roboto</div>
+                    <p class="text-gray-600 text-sm mb-3">Bold display with neutral sans-serif</p>
+                    <span class="font-category">Bold • Dramatic</span>
+                </div>
+                
+                <!-- Pairing 6 -->
+                <div class="font-card" data-pairing="pairing6">
+                    <div class="font-sample" style="font-family: 'Prata', serif;">Prata</div>
+                    <div class="font-sample" style="font-family: 'Inter', sans-serif; font-size: 1rem;">+ Inter</div>
+                    <p class="text-gray-600 text-sm mb-3">Stylish serif with versatile sans-serif</p>
+                    <span class="font-category">Stylish • Sophisticated</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Font Categories -->
+        <div class="bg-white rounded-xl shadow-lg p-6">
+            <h2 class="text-2xl font-bold mb-6">Font Categories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-4 border rounded-lg">
+                    <h3 class="font-bold mb-2">Serif Fonts</h3>
+                    <p class="text-gray-600 text-sm mb-3">Traditional, formal, and authoritative</p>
+                    <ul class="text-sm text-gray-700">
+                        <li class="mb-1">• Merriweather</li>
+                        <li class="mb-1">• Playfair Display</li>
+                        <li class="mb-1">• Cormorant Garamond</li>
+                        <li>• EB Garamond</li>
+                    </ul>
+                </div>
+                
+                <div class="p-4 border rounded-lg">
+                    <h3 class="font-bold mb-2">Sans-Serif Fonts</h3>
+                    <p class="text-gray-600 text-sm mb-3">Modern, clean, and readable</p>
+                    <ul class="text-sm text-gray-700">
+                        <li class="mb-1">• Inter</li>
+                        <li class="mb-1">• Montserrat</li>
+                        <li class="mb-1">• Raleway</li>
+                        <li>• Open Sans</li>
+                    </ul>
+                </div>
+                
+                <div class="p-4 border rounded-lg">
+                    <h3 class="font-bold mb-2">Display Fonts</h3>
+                    <p class="text-gray-600 text-sm mb-3">Decorative and attention-grabbing</p>
+                    <ul class="text-sm text-gray-700">
+                        <li class="mb-1">• Abril Fatface</li>
+                        <li class="mb-1">• Great Vibes</li>
+                        <li class="mb-1">• Dancing Script</li>
+                        <li>• Prata</li>
+                    </ul>
+                </div>
+                
+                <div class="p-4 border rounded-lg">
+                    <h3 class="font-bold mb-2">Monospace Fonts</h3>
+                    <p class="text-gray-600 text-sm mb-3">Technical, code, and retro style</p>
+                    <ul class="text-sm text-gray-700">
+                        <li class="mb-1">• Courier New</li>
+                        <li class="mb-1">• Roboto Mono</li>
+                        <li class="mb-1">• Source Code Pro</li>
+                        <li>• Fira Code</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 pt-12 pb-8 mt-12">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <!-- Column 1 -->
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background: linear-gradient(135deg, #6366f1, #8b5cf6)">
+                            <i class="fas fa-palette text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Palettecraft</h3>
+                    </div>
+                    <p class="mb-6">
+                        Free tools for designers and developers to find perfect colors and fonts for web projects.
+                    </p>
+                </div>
+                
+                <!-- Column 2 -->
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-4">Tools</h4>
+                    <ul class="space-y-2">
+                        <li><a href="colors.html">Color Palette Generator</a></li>
+                        <li><a href="fonts.html">Font Pairing Tool</a></li>
+                        <li><a href="resources.html">Contrast Checker</a></li>
+                        <li><a href="resources.html">Color Picker</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 3 -->
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="resources.html">Color Theory Guide</a></li>
+                        <li><a href="resources.html">Typography Guide</a></li>
+                        <li><a href="resources.html">Web Design Tips</a></li>
+                        <li><a href="resources.html">Video Tutorials</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Column 4 -->
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-4">About</h4>
+                    <ul class="space-y-2">
+                        <li><a href="resources.html#about">About Palettecraft</a></li>
+                        <li><a href="resources.html#contact">Contact</a></li>
+                        <li><a href="resources.html#privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p>&copy; 2023 Palettecraft. All rights reserved. A free tool for the design community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Font pairing definitions
+        const fontPairings = {
+            pairing1: {
+                heading: "'Playfair Display', serif",
+                body: "'Inter', sans-serif",
+                name: "Playfair Display + Inter",
+                description: "Elegant serif with clean sans-serif"
+            },
+            pairing2: {
+                heading: "'Montserrat', sans-serif",
+                body: "'Merriweather', serif",
+                name: "Montserrat + Merriweather",
+                description: "Modern geometric with traditional serif"
+            },
+            pairing3: {
+                heading: "'Cormorant Garamond', serif",
+                body: "'Lora', serif",
+                name: "Cormorant Garamond + Lora",
+                description: "Elegant serif pairing"
+            },
+            pairing4: {
+                heading: "'Raleway', sans-serif",
+                body: "'Open Sans', sans-serif",
+                name: "Raleway + Open Sans",
+                description: "Clean sans-serif pairing"
+            },
+            pairing5: {
+                heading: "'Abril Fatface', cursive",
+                body: "'Roboto', sans-serif",
+                name: "Abril Fatface + Roboto",
+                description: "Bold display with neutral sans-serif"
+            },
+            pairing6: {
+                heading: "'Prata', serif",
+                body: "'Inter', sans-serif",
+                name: "Prata + Inter",
+                description: "Stylish serif with versatile sans-serif"
+            }
+        };
+
+        // DOM elements
+        const headingSelect = document.getElementById('heading-font');
+        const bodySelect = document.getElementById('body-font');
+        const previewHeading = document.getElementById('preview-heading');
+        const previewSubheading = document.getElementById('preview-subheading');
+        const previewBody = document.getElementById('preview-body');
+        const implementationCode = document.getElementById('implementationCode');
+        const copyButton = document.getElementById('copyCode');
+        
+        // Update preview when fonts change
+        function updatePreview() {
+            const headingFont = headingSelect.value;
+            const bodyFont = bodySelect.value;
+            
+            // Update preview elements
+            previewHeading.style.fontFamily = headingFont;
+            previewSubheading.style.fontFamily = headingFont;
+            previewBody.style.fontFamily = bodyFont;
+            
+            // Update code block
+            const headingFontName = headingFont.split("'")[1] || "Heading Font";
+            const bodyFontName = bodyFont.split("'")[1] || "Body Font";
+            
+            implementationCode.textContent = `<!-- Add to your HTML head -->
+<link href="https://fonts.googleapis.com/css2?family=${encodeURIComponent(headingFontName.replace(' ', '+'))}:wght@400;700&family=${encodeURIComponent(bodyFontName.replace(' ', '+'))}:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- CSS -->
+body {
+  font-family: ${bodyFont};
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: ${headingFont};
+}
+
+/* Optional: Set font weights */
+body {
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+h1 {
+  font-weight: 700;
+  line-height: 1.2;
+}`;
+        }
+        
+        // Apply font pairing
+        function applyFontPairing(pairing) {
+            headingSelect.value = pairing.heading;
+            bodySelect.value = pairing.body;
+            updatePreview();
+            
+            // Update selected state on cards
+            document.querySelectorAll('.font-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            const selectedCard = document.querySelector(`[data-pairing="${pairing}"]`);
+            if (selectedCard) {
+                selectedCard.classList.add('selected');
+            }
+        }
+        
+        // Copy code functionality
+        copyButton.addEventListener('click', function() {
+            const code = implementationCode.textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check mr-2"></i> Copied!';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                }, 2000);
+            });
+        });
+        
+        // Font card click handlers
+        document.querySelectorAll('.font-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const pairingId = this.getAttribute('data-pairing');
+                const pairing = fontPairings[pairingId];
+                
+                if (pairing) {
+                    // Remove selected class from all cards
+                    document.querySelectorAll('.font-card').forEach(c => {
+                        c.classList.remove('selected');
+                    });
+                    
+                    // Add selected class to clicked card
+                    this.classList.add('selected');
+                    
+                    // Apply the font pairing
+                    applyFontPairing(pairing);
+                }
+            });
+        });
+        
+        // Event listeners for select changes
+        headingSelect.addEventListener('change', updatePreview);
+        bodySelect.addEventListener('change', updatePreview);
+        
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+            
+            const icon = this.querySelector('i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Initialize with default pairing
+        updatePreview();
+        document.querySelector('.font-card').classList.add('selected');
+    </script>
+</body>
+</html>
